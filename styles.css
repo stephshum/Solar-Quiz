@@ -1,0 +1,102 @@
+.Fact-or-Myth {
+  width: 300px;
+  height: 59.5px;
+  font-family: SFProDisplay;
+  font-size: 50px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  color: #000000;
+}
+
+.Are-you-aware-of-the {
+  width: 428px;
+  height: 87px;
+  font-family: SFProText;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+}
+
+.Lets-Find-Out {
+  width: 194.5px;
+  height: 20px;
+  font-family: SFProText;
+  font-size: 17px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.Fact-vs-Myth-Image {
+  width: 448px;
+  height: 352px;
+  object-fit: contain;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 100px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row {
+  padding-top: 70px
+}
+
+.Tomkins-County-is-to {
+  width: 364px;
+  height: 58px;
+  font-family: SFProText;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+}
+
+.Fact {
+  width: 132.7px;
+  height: 20px;
+  font-family: SFProText;
+  font-size: 17px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.Myth {
+  width: 132.7px;
+  height: 20px;
+  font-family: SFProText;
+  font-size: 17px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
