@@ -16,14 +16,14 @@
 
       <!-- png -->
     
-      <img src="img/quiz_4.png" alt="Red arrow slanting downwards with grey background." class = "Rectangle-3">
+      <img src="pagesix image link..." alt="Tools arranged on wood backdrop." class = "Rectangle-3">
       
       </div>
       <div class="column">
           <div class = "white_square">
             <div class = "internal_container">
         
-                <div class="Tomkins-County-is-to">Solar panel costs have dropped 80% since 2008.</div>
+                <div class="Tomkins-County-is-to">Solar panels require regular maintenance and will lower the value of my home.</div>
 
                 <button class="fact_button"><div class="Fact">Fact</div></button>
 
