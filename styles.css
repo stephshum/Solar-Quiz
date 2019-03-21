@@ -1,7 +1,7 @@
 .Fact-or-Myth {
   width: 300px;
   height: 59.5px;
-  font-family: SFProDisplay;
+  font-family: Arial, Helvetica, SFProText;
   font-size: 50px;
   font-weight: 600;
   font-style: normal;
@@ -9,12 +9,13 @@
   line-height: normal;
   letter-spacing: 0.2px;
   color: #000000;
+  padding-bottom: 10px
 }
 
 .Are-you-aware-of-the {
   width: 428px;
   height: 87px;
-  font-family: SFProText;
+  font-family: Arial, Helvetica, SFProText;
   font-size: 24px;
   font-weight: normal;
   font-style: normal;
@@ -27,7 +28,7 @@
 .Lets-Find-Out {
   width: 194.5px;
   height: 20px;
-  font-family: SFProText;
+  font-family: Arial, Helvetica, SFProText;
   font-size: 17px;
   font-weight: 600;
   font-style: normal;
@@ -63,7 +64,7 @@
 .Tomkins-County-is-to {
   width: 364px;
   height: 58px;
-  font-family: SFProText;
+  font-family: Arial, Helvetica, SFProText;
   font-size: 24px;
   font-weight: 500;
   font-style: normal;
@@ -71,12 +72,13 @@
   line-height: normal;
   letter-spacing: -0.2px;
   color: #000000;
+  padding-bottom: 150px;
 }
 
 .Fact {
   width: 132.7px;
   height: 20px;
-  font-family: SFProText;
+  font-family: Arial, Helvetica, SFProText;
   font-size: 17px;
   font-weight: 600;
   font-style: normal;
@@ -90,7 +92,7 @@
 .Myth {
   width: 132.7px;
   height: 20px;
-  font-family: SFProText;
+  font-family: Arial, Helvetica, SFProText;
   font-size: 17px;
   font-weight: 600;
   font-style: normal;
@@ -99,4 +101,55 @@
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+}
+
+
+.Rectangle-3 {
+  width: 448px;
+  height: 352px;
+  border-radius: 7.5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.Rectangle-3-Copy {
+  width: 300px;
+  height: 48px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  background-color: #000000;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+}
+
+.fact_button {
+  width: 168px;
+  height: 48px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(74, 144, 226, 0.4);
+  background-color: #4a90e2;
+}
+
+.myth_button {
+  width: 168px;
+  height: 48px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(66, 75, 90, 0.4);
+  background-color: #424b5a;
+}
+
+.white_square {
+  width: 448px;
+  height: 352px;
+  border-radius: 7.5px;
+  box-shadow: 0 2px 4px 0 #9b9b9b;
+  background-color: #ffffff;
+  object-fit: contain;
+
+}
+
+.internal_container {
+  padding: 40px
 }
