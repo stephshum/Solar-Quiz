@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Email Form</title>
+    <style>
+      h1 {
+        margin-top: 0;
+      }
+      body {
+        background-color: powderblue;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman",
+          serif sans-serif;
+      }
+      form {
+        background-color: white;
+        padding: 5%;
+        margin: 5%;
+      }
+      input {
+        width: 100%;
+        height: 3em;
+      }
+
+      textarea {
+        width: 100%;
+        height: 7em;
+      }
+
+      #name1 {
+        /*display: inline-block;
+        width: 48.85%;*/
+
+        display: block;
+        position: relative;
+        float: left;
+        width: 48%;
+      }
+
+      #name2 {
+        /*display: inline-block;
+        width: 48.85%;*/
+
+        display: block;
+        position: relative;
+        float: left;
+        width: 48%;
+        margin-left: 1%;
+      }
+
+      #submit {
+        width: 6em;
+        height: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="process.php" method="post">
+      <h1>Tiny Home Mailing List</h1>
+      <div style="padding-bottom: 5%">
+        <label>Name *</label>
+        <br />
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First name"
+          id="name1"
+        />
+        <input type="text" name="lastName" placeholder="Last name" id="name2" />
+      </div>
+      <br />
+      <br />
+      <div>
+        <label>Email *</label>
+        <br />
+        <input type="text" name="emailAddress" value="" />
+      </div>
+      <br />
+      <div>
+        <label>How did you hear about Tiny Home?</label>
+        <br />
+        <select name="howDidYouHearAboutTinyHome">
+          <option value="selectAnOption">-- Select an option --</option>
+          <option value="newsletter">Newsletter</option>
+          <option value="ecoFair/Event">Eco Fair/Event</option>
+          <option value="friend">Friend</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label>If you chose 'Other', please specify:</label>
+        <br />
+        <input type="text" name="specifyOther" />
+      </div>
+      <br />
+      <div>
+        <label>Comments/Feedback</label>
+        <br />
+        <textarea name="commentsFeedback"> </textarea>
+      </div>
+      <br />
+      <div>
+        <input type="submit" name="submit" value="Submit" id="submit" />
+      </div>
+    </form>
+  </body>
+</html>
