@@ -43,8 +43,19 @@ $page_number = trim($page_number);
         <div class="column">
           <div class="white_square">
             <div class="internal_container">
-              <?php echo "<div class=question> $question </div>" ?>
-              <form method="get" action="quiz.php">
+              <?php
+              echo "<div class=question> $question </div>";
+              $sql = "SELECT COUNT(*) FROM pages;";
+              $records = exec_sql_query($db, $sql)->fetchAll();
+              foreach ($records as $record){
+                $total_pages = $record["COUNT(*)"];
+              };
+              if ($total_pages == $page_number) {
+                echo "<form method=get action=emailform.html>";
+              } else {
+                echo "<form method=get action=quiz.php>";
+              }
+              ?>
                 <button class="fact_button fact">Fact</button>
                 <button class="myth_button myth">Myth</button>
                 <?php
