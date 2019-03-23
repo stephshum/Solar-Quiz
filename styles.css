@@ -1,4 +1,4 @@
-.Fact-or-Myth {
+.intro_title {
   width: 300px;
   height: 59.5px;
   font-family: Arial, Helvetica, SFProText;
@@ -12,7 +12,7 @@
   padding-bottom: 10px
 }
 
-.Are-you-aware-of-the {
+.intro_description {
   width: 428px;
   height: 87px;
   font-family: Arial, Helvetica, SFProText;
@@ -25,7 +25,20 @@
   color: #000000;
 }
 
-.Lets-Find-Out {
+.intro_button {
+  width: 300px;
+  height: 48px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  background-color: #000000;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+}
+
+.intro_button_text {
   width: 194.5px;
   height: 20px;
   font-family: Arial, Helvetica, SFProText;
@@ -39,7 +52,7 @@
   color: #ffffff;
 }
 
-.Fact-vs-Myth-Image {
+.image {
   width: 448px;
   height: 352px;
   object-fit: contain;
@@ -61,7 +74,7 @@
   padding-top: 70px
 }
 
-.Tomkins-County-is-to {
+.question {
   width: 364px;
   height: 58px;
   font-family: Arial, Helvetica, SFProText;
@@ -75,7 +88,7 @@
   padding-bottom: 150px;
 }
 
-.Fact {
+.fact {
   width: 132.7px;
   height: 20px;
   font-family: Arial, Helvetica, SFProText;
@@ -89,7 +102,7 @@
   color: #ffffff;
 }
 
-.Myth {
+.myth {
   width: 132.7px;
   height: 20px;
   font-family: Arial, Helvetica, SFProText;
@@ -104,25 +117,6 @@
 }
 
 
-.Rectangle-3 {
-  width: 448px;
-  height: 352px;
-  border-radius: 7.5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-.Rectangle-3-Copy {
-  width: 300px;
-  height: 48px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
-  background-color: #000000;
-  padding-top: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 10px;
-  margin-top: 50px;
-}
 
 .fact_button {
   width: 168px;
