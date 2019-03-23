@@ -19,6 +19,7 @@ include('includes/init.php');
         <button class="intro_button">
           <div class="intro_button_text">Let’s Find Out </div>
         </button>
+        <input type="hidden" id="pageid" name="pageid" value="1">
     </form>
     </div>
     <div class="column">

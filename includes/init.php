@@ -1,5 +1,4 @@
 <?php
-echo "hi";
 // show database errors during development.
 function handle_db_error($exception) {
   echo '<p><strong>' . htmlspecialchars('Exception : ' . $exception->getMessage()) . '</strong></p>';
