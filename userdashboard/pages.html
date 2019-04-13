@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <h1>User Dashboard</h1>
+    <select class = "selectQuiz" name="chooseAQuiz">
+      <option value="selectOption">-- Select a quiz --</option>
+      <option value="thermal">Thermal</option>
+      <option value="lighting">Lighting</option>
+      <option value="window">Window</option>
+      <option value="solar">Solar</option>
+      <option value="heating">Heating</option>
+    </select>
+    <div class="topnav">
+      <a href="questions.html">Questions</a>
+      <a href="pictures.html">Pictures</a>
+      <a class="selectedPage" href="pages.html">Pages</a>
+    </div>
+    <div>
+      <form action="???.php" method="post">
+        <h2>Pages</h2>
+        <div>
+          <h3>Create New Page</h3>
+          <div class = selectElts>
+            <div>
+                <label for="question">Select a Question</label>
+            </div>
+            <div>
+              <label for="selectQuestion"></label>
+              <select name="selectQuestion">
+                <option value="selectQuestion">-- Select a question --</option>
+                <option value="q1">q1</option>
+                <option value="q2">q2</option>
+                <option value="q3">q3</option>
+                <option value="q4">q4</option>
+                <option value="q5">q5</option>
+              </select>
+            </div>
+          </div>
+          <div class = selectElts>
+            <label for="image">Select an Image</label>
+            <div>
+              <label for="selectImage"></label>
+              <select name="selectImage">
+                <option value="selectImage">-- Select an image --</option>
+                <option value="i1">i1.jpg</option>
+                <option value="i2">i2.jpg</option>
+                <option value="i3">i3.jpg</option>
+                <option value="i4">i4.jpg</option>
+                <option value="i5">i5.jpg</option>
+              </select>
+            </div>
+          </div>
+          <input type="submit" name="submit" value="Submit" id="submit" />
+        </div>
+        <div>
+          <h3>Delete a Page</h3>
+          <div class = selectElts>
+              <label for="page">Select a Page</label>
+              <div>
+                <label for="selectPage"></label>
+                <select name="selectPage">
+                  <option value="selectImage">-- Select a page --</option>
+                  <option value="p1">p1.jpg</option>
+                  <option value="p2">p2.jpg</option>
+                  <option value="p3">p3.jpg</option>
+                  <option value="p4">p4.jpg</option>
+                  <option value="p5">p5.jpg</option>
+                </select>
+              </div>
+            </div>
+            <div>
+                <input type="submit" name="submit" value="Submit" id="submit" />
+              </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

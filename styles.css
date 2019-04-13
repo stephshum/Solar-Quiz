@@ -9,7 +9,7 @@
   line-height: normal;
   letter-spacing: 0.2px;
   color: #000000;
-  padding-bottom: 10px
+  padding-bottom: 10px;
 }
 
 .intro_description {
@@ -71,7 +71,7 @@
 }
 
 .row {
-  padding-top: 70px
+  padding-top: 70px;
 }
 
 .question {
@@ -116,8 +116,6 @@
   color: #ffffff;
 }
 
-
-
 .fact_button {
   width: 168px;
   height: 48px;
@@ -141,9 +139,9 @@
   box-shadow: 0 2px 4px 0 #9b9b9b;
   background-color: #ffffff;
   object-fit: contain;
-
 }
 
 .internal_container {
-  padding: 40px
+  padding: 40px;
 }
+
