@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Add/Delete Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <h1>User Dashboard</h1>
+    <select class="selectQuiz" name="chooseAQuiz">
+      <option value="selectOption">-- Select a quiz --</option>
+      <option value="thermal">Thermal</option>
+      <option value="lighting">Lighting</option>
+      <option value="window">Window</option>
+      <option value="solar">Solar</option>
+      <option value="heating">Heating</option>
+    </select>
+    <div class="topnav">
+      <a href="editpage.html">Edit Page</a>
+      <a class="selectedPage" href="add-deletepage.html">Add/Delete Page</a>
+    </div>
+    <div>
+      <form action="???.php" method="post">
+        <div>
+          <h3>Add a Page</h3>
+          <div>
+            <label for="description">Question</label>
+            <br />
+            <textarea name="description"> </textarea>
+          </div>
+          <div id="addPageImageLabel">
+            <label for="uploadImage">Image</label>
+          </div>
+          <input
+            type="file"
+            name="uploadImage"
+            accept="image/png, image/jpeg, image/jpg, image/HEIC"
+          />
+          <br />
+        </div>
+        <div>
+          <h3>Delete a Page</h3>
+          <div class="selectElts">
+            <label for="deletePage"></label>
+            <select name="deletePage">
+              <option value="selectPage">-- Select a page --</option>
+              <option value="p1">p1</option>
+              <option value="p2">p2</option>
+              <option value="p3">p3</option>
+              <option value="p4">p4</option>
+              <option value="p5">p5</option>
+            </select>
+          </div>
+          <div>
+            <input
+              class="saveChanges"
+              type="submit"
+              name="submit"
+              value="Save changes"
+              id="submit"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
