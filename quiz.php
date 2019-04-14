@@ -9,7 +9,7 @@ $page_number = trim($page_number);
 
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Fact or Myth</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
 
