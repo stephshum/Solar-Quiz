@@ -14,12 +14,23 @@ include('includes/init.php');
   <div class="row">
     <div class="column">
       <div class="intro_title"> Fact or Myth </div>
-      <div class="intro_description"> Are you aware of the common misconceptions regarding solar energy? What is true or false?</div>
+      <div class="intro_description"> Are you aware of the common environmental misconceptions? What is true or false?</div>
       <form method="get" action="quiz.php">
+        <select class="selectQuiz" name="chooseAQuiz">
+          <?php
+          $sql = 'SELECT name FROM quizzes;';
+          $records = exec_sql_query($db, $sql)->fetchAll();
+          foreach ($records as $record) {
+            $quizname = $record['name'];
+            echo "<option value=$quizname>$quizname</option>";
+          }
+          ?>
+
+        </select>
         <button class="intro_button">
           <div class="intro_button_text">Let’s Find Out </div>
         </button>
-        <input type="hidden" id="pageid" name="pageid" value="1">
+        <!-- <input type="hidden" id="pageid" name="pageid" value="1"> -->
     </form>
     </div>
     <div class="column">

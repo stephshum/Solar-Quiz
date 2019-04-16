@@ -8,14 +8,29 @@ CREATE TABLE `photos` (
 CREATE TABLE `questions` (
 	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`question`	TEXT NOT NULL,
-	`answer`	TEXT NOT NULL
+	`answer`	TEXT NOT NULL,
+	`feedback`	TEXT NOT NULL
 );
 
 CREATE TABLE `pages` (
 	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`question_id`	INTEGER NOT NULL,
-	`photo_id`	INTEGER NOT NULL
+	`photo_id`	INTEGER NOT NULL,
+	`quiz_id`	INTEGER NOT NULL
 );
+
+CREATE TABLE `quizzes` (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`name`	TEXT NOT NULL UNIQUE
+);
+
+INSERT INTO quizzes (name) VALUES ('solar');
+INSERT INTO quizzes (name) VALUES ('thermal');
+INSERT INTO quizzes (name) VALUES ('lighting');
+INSERT INTO quizzes (name) VALUES ('window');
+INSERT INTO quizzes (name) VALUES ('heating');
+
+
 
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_1.png', 'png', 'Snowy Scene');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_2.png', 'png', 'Solar Panels');
@@ -26,18 +41,18 @@ INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_6.png', 'png', 
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_7.png', 'png', 'Downward Tilted Arrow');
 
 
-INSERT INTO questions (question, answer) VALUES ('Tomkins County is too cloudy and snowy for solar to work', 'Myth');
-INSERT INTO questions (question, answer) VALUES ('I can use solar panels to power air conditioning, hot water heaters, and everything else that natural gas, electricity, and oil fuels', 'Fact');
-INSERT INTO questions (question, answer) VALUES ('Solar panels are too expensive', 'Myth');
-INSERT INTO questions (question, answer) VALUES ('Solar produces no pollution, making it one of the cleanest energy sources', 'Fact');
-INSERT INTO questions (question, answer) VALUES ('Solar panels require regular maintenance and will lower the value of my home', 'Myth');
-INSERT INTO questions (question, answer) VALUES ('Installing solar panels will put holes in my roof and cause roof damage', 'Myth');
-INSERT INTO questions (question, answer) VALUES ('Solar panel costs have dropped 80% since 2008', 'Fact');
+INSERT INTO questions (question, answer, feedback) VALUES ('Tomkins County is too cloudy and snowy for solar to work', 'Myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('I can use solar panels to power air conditioning, hot water heaters, and everything else that natural gas, electricity, and oil fuels', 'Fact', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar panels are too expensive', 'Myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar produces no pollution, making it one of the cleanest energy sources', 'Fact', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar panels require regular maintenance and will lower the value of my home', 'Myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Installing solar panels will put holes in my roof and cause roof damage', 'Myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar panel costs have dropped 80% since 2008', 'Fact', 'Yeah!');
 
-INSERT INTO pages (question_id, photo_id) VALUES (1,1);
-INSERT INTO pages (question_id, photo_id) VALUES (2,2);
-INSERT INTO pages (question_id, photo_id) VALUES (3,3);
-INSERT INTO pages (question_id, photo_id) VALUES (4,4);
-INSERT INTO pages (question_id, photo_id) VALUES (5,5);
-INSERT INTO pages (question_id, photo_id) VALUES (6,6);
-INSERT INTO pages (question_id, photo_id) VALUES (7,7);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (1,1,1);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (2,2,4);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (3,3,1);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (4,4,1);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (5,5,4);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (6,6,1);
+INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (7,7,4);
