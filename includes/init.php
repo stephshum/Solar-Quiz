@@ -1,4 +1,12 @@
 <?php
+
+const GALLERY_UPLOADS_PATH = "uploads/";
+
+function record_general_message($message){
+  global $general_messages;
+  array_push($general_messages, $message);
+}
+
 // show database errors during development.
 function handle_db_error($exception) {
   echo '<p><strong>' . htmlspecialchars('Exception : ' . $exception->getMessage()) . '</strong></p>';
