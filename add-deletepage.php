@@ -1,41 +1,42 @@
 <?php
 include('includes/init.php');
 
-//if a new photo is submitted, add the file to the uploads/photos file, and
-//insert it into the photos database
-if (isset($_POST['uploadImage'])){
-  if (isset($_POST['question'])){
-    $question = filter_input(INPUT_POST, 'question', FILTER_SANITIZE_STRING);
-  } else {
-    $question = "";
-  }
-  $upload_file = $_FILES['uploadImage'];
-  if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
-    $file_name = basename($upload_file["name"]);
-    $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
-    $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_ext, :alt_text);";
-    $params = array(
-      ":file_name" => $file_name,
-      ":file_ext" => $file_ext,
-      ":alt_text" => $alt_text
-  );
-  echo 'here';
-    if (exec_sql_query($db, $sql, $params)){
-      $file_id = $db->lastInsertId("id");
-      move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
-      record_general_message("Your file was uploaded!") ;
-    } else {
-      record_general_message("Your file was not uploaded. Try again.") ;
-    }
-  } else {
-    record_general_message("Your file was not uploaded. Try again.") ;
-  }
-  echo 'lalala';
+if (isset($_GET['chooseAQuiz'])) {
+  $quiz = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_STRING));
+} else {
+  $sql = 'SELECT id, name FROM quizzes;';
+  $records = exec_sql_query($db, $sql)->fetchAll();
+  $quiz = $records[0]['id'];
 }
 
 
 
+if (isset($_POST['submit'])){
+  $question = filter_input(INPUT_POST, 'question', FILTER_SANITIZE_STRING);
+  $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
+  $upload_file = $_FILES['uploadImage'];
+  // $sql = "INSERT INTO questions ()"
+  if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
+    $file_name = basename($upload_file["name"]);
+    $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
+    $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :file_name);";
+    $params = array(
+      ":file_name" => $file_name,
+      ":file_extension" => $file_extension,
+      ":file_name" => $file_name
+    );
+    if (exec_sql_query($db, $sql, $params)){
+        $file_id = $db->lastInsertId("id");
+        move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
+        record_general_message("Your file was uploaded!") ;
+      } else {
+        record_general_message("Your file was not uploaded. Try again.") ;
+      }
+    } else {
+      record_general_message("Your file was not uploaded. Try again.") ;
+    }
 
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,20 +51,28 @@ if (isset($_POST['uploadImage'])){
   </head>
   <body>
     <h1>User Dashboard</h1>
-    <select class="selectQuiz" name="chooseAQuiz">
-      <?php
-      $sql_for_quizzes = 'SELECT name FROM quizzes;';
-      $quizzes = exec_sql_query($db, $sql_for_quizzes)->fetchAll();
-      foreach ($quizzes as $quiz) {
-        $quizname = $quiz['name'];
-        echo "<option value=$quizname>$quizname</option>";
-      }
-      ?>
 
-    </select>
+    <form method = 'get' action="add-deletepage.php">
+    <?php
+      echo "<select class='selectQuiz' name='chooseAQuiz' onchange='if(this.value != $quiz) { this.form.submit(); }'>";
+
+        $sql = 'SELECT id, name FROM quizzes;';
+        $records = exec_sql_query($db, $sql)->fetchAll();
+        foreach ($records as $record) {
+          $quizid = $record['id'];
+          $quizname = $record['name'];
+          if ($quiz == $quizid){
+            echo "<option value=$quizid selected>$quizname</option>";
+          } else {
+            echo "<option value=$quizid>$quizname</option>";
+          }
+        }
+        ?>
+      </select>
+    </form>
     <div class="topnav">
-      <a href="editpage.html">Edit Page</a>
-      <a class="selectedPage" href="add-deletepage.html">Add/Delete Page</a>
+      <a href="editpage.php">Edit Page</a>
+      <a class="selectedPage" href="add-deletepage.php">Add/Delete Page</a>
     </div>
     <div>
       <form action="add-deletepage.php" method="post" enctype="multipart/form-data">

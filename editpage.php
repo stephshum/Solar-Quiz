@@ -19,8 +19,8 @@
       <option value="heating">Heating</option>
     </select>
     <div class="topnav">
-      <a class="selectedPage" href="editpage.html">Edit Page</a>
-      <a href="add-deletepage.html">Add/Delete Page</a>
+      <a class="selectedPage" href="editpage.php">Edit Page</a>
+      <a href="add-deletepage.php">Add/Delete Page</a>
     </div>
     <div>
       <form action="???.php" method="post">
