@@ -48,11 +48,22 @@
             <textarea name="question"> </textarea>
           </div>
           <div>
+            <label for="factormyth"></label>
+            <div>
+              <form name="factormyth" action="" method="post">
+              <input type="radio" name = "fact/myth" value="fact" /> Fact
+              <input type="radio" name = "fact/myth" value="myth" /> Myth
+              </form>
+            </div>
+            <br>
+          </div>
+          <div>
             <div>
               <label for="uploadImage"
                 >Image (*Note: If no file is selected, current image will remain
                 unchanged)
               </label>
+              <br>
             </div>
             <br />
             <div>
@@ -62,6 +73,11 @@
                 name="uploadImage"
                 accept="image/png, image/jpeg, image/jpg, image/HEIC"
               />
+            </div>
+            <div>
+              <br>
+              <label id = "alt_textlabel" for="alt_text">Alt text (image description)</label>
+              <textarea name="alt_text"></textarea>
             </div>
           </div>
           <div>

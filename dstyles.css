@@ -10,13 +10,14 @@ h3 {
 
 form {
   background-color: #ffffff;
-  padding: 5%;
+  padding: 3%;
+  margin: 0% 5% -4% 5%;
 }
 
 textarea {
   width: 100%;
   height: 7em;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 
 label {
@@ -30,7 +31,7 @@ select {
 }
 
 input {
-  margin: 2% 0% 1% 0%;
+  margin: 1% 0% 1% 0%;
 }
 
 /* doesn't work?? */
@@ -77,13 +78,20 @@ input [type="file"] {
 }
 
 #addPageImageLabel {
-  margin: 2% 2% 1% 0%;
+  margin: 1% 2% 1% 0%;
   float: left;
 }
 
 .submitImage {
   align-self: left;
 }
+
+.saveChanges {
+  height: 70%;
+  width: 15%;
+  box-sizing: content-box;
+}
+
 
 /* not precedence... */
 /* .selectImage {

@@ -86,6 +86,16 @@ if (isset($_POST['submit'])){
             <textarea name="question"> </textarea>
           </div>
           <div>
+            <label for="factormyth"></label>
+            <div>
+              <form name="factormyth" action="" method="post">
+              <input type="radio" name = "fact/myth" value="fact" /> Fact
+              <input type="radio" name = "fact/myth" value="myth" /> Myth
+              </form>
+            </div>
+            <br>
+          </div>
+          <div>
             <label for="feedback">Feedback</label>
             <br />
             <textarea name="feedback"> </textarea>
@@ -98,7 +108,11 @@ if (isset($_POST['submit'])){
             name="uploadImage"
             accept="image/png, image/jpeg, image/jpg, image/HEIC"
           />
-          <br />
+          <div>
+            <br>
+            <label id = "alt_textlabel" for="alt_text">Alt text (image description)</label>
+            <textarea name="alt_text"></textarea>
+          </div>
           <input
             class="saveChanges"
             type="submit"
