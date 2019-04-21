@@ -29,6 +29,7 @@ $selected_question_id = $records[0]['question_id'];
 $selected_photo_id = $records[0]['photo_id'];
 
 $sql ="select * from questions where id = $selected_question_id;";
+var_dump($selected_question_id);
 $records = exec_sql_query($db, $sql)->fetchAll();
 $selectedquestion = $records[0]['question'];
 $selectedanswer = $records[0]['answer'];
@@ -44,37 +45,39 @@ if (isset($_POST['update'])){
   $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
   $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
   $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_STRING);
-  if (isset($_FILES['uploadImage'])) {
-
-  $upload_file = $_FILES['uploadImage'];
-  if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
-    $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
-    $file_name = preg_replace("/[^a-zA-Z0-9]+/", "", (basename($upload_file["name"])));
-    $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :alt_text);";
-    $params = array(
-      ":file_name" => $file_name,
-      ":file_extension" => $file_extension,
-      ":alt_text" => $alt_text
-    );
-    if (exec_sql_query($db, $sql, $params)){
-        $file_id = $db->lastInsertId("id");
-        move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
-        record_general_message("Your file was uploaded!") ;
-      } else {
-        record_general_message("Your file was not uploaded. Try again.") ;
-      }
-
-
-
-    } else {
-      record_general_message("Your file was not uploaded. Try again.") ;
-    }
-  }
-  $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $selected_question_id;";
+  $inputtedquestionid = filter_input(INPUT_POST, 'inputtedquestionid', FILTER_SANITIZE_STRING);
+  // if (isset($_FILES['uploadImage'])) {
+  //
+  // $upload_file = $_FILES['uploadImage'];
+  // if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
+  //   $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
+  //   $file_name = preg_replace("/[^a-zA-Z0-9]+/", "", (basename($upload_file["name"])));
+  //   $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :alt_text);";
+  //   $params = array(
+  //     ":file_name" => $file_name,
+  //     ":file_extension" => $file_extension,
+  //     ":alt_text" => $alt_text
+  //   );
+  //   if (exec_sql_query($db, $sql, $params)){
+  //       $file_id = $db->lastInsertId("id");
+  //       move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
+  //       record_general_message("Your file was uploaded!") ;
+  //     } else {
+  //       record_general_message("Your file was not uploaded. Try again.") ;
+  //     }
+  //
+  //
+  //
+  //   } else {
+  //     record_general_message("Your file was not uploaded. Try again.") ;
+  //   }
+  // }
+  $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $inputtedquestionid;";
   // $sql = "INSERT INTO questions (question, answer, feedback) VALUES (:question, :answer, :feedback);";
   var_dump($question);
   var_dump($answer);
   var_dump($feedback);
+  var_dump($inputtedquestionid);
 
   $params = array(
     ":question" => $question,
@@ -213,6 +216,9 @@ if (isset($_POST['update'])){
             </div>
             <br>
             <div>
+              <?php
+              echo "<input type=hidden id=inputtedquestionid name=inputtedquestionid value=$selected_question_id> ";
+              ?>
               <input
                 class="submitImage"
                 type="file"
