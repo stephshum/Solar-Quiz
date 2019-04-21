@@ -102,3 +102,9 @@ input [type="file"] {
 /* #pageSelect {
   float: left;
 } */
+
+.image {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}

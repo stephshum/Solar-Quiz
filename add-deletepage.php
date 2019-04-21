@@ -2,28 +2,29 @@
 include('includes/init.php');
 
 if (isset($_GET['chooseAQuiz'])) {
-  $quiz = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_STRING));
+  $quiz_id = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
 } else {
   $sql = 'SELECT id, name FROM quizzes;';
   $records = exec_sql_query($db, $sql)->fetchAll();
-  $quiz = $records[0]['id'];
+  $quiz_id = $records[0]['id'];
 }
 
 
 
-if (isset($_POST['submit'])){
+if (isset($_POST['add'])){
   $question = filter_input(INPUT_POST, 'question', FILTER_SANITIZE_STRING);
   $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
+  $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
+  $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_STRING);
   $upload_file = $_FILES['uploadImage'];
-  // $sql = "INSERT INTO questions ()"
   if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
-    $file_name = basename($upload_file["name"]);
     $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
-    $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :file_name);";
+    $file_name = preg_replace("/[^a-zA-Z0-9]+/", "", (basename($upload_file["name"])));
+    $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :alt_text);";
     $params = array(
       ":file_name" => $file_name,
       ":file_extension" => $file_extension,
-      ":file_name" => $file_name
+      ":alt_text" => $alt_text
     );
     if (exec_sql_query($db, $sql, $params)){
         $file_id = $db->lastInsertId("id");
@@ -32,11 +33,55 @@ if (isset($_POST['submit'])){
       } else {
         record_general_message("Your file was not uploaded. Try again.") ;
       }
+    $sql = "INSERT INTO questions (question, answer, feedback) VALUES (:question, :answer, :feedback);";
+    $params = array(
+      ":question" => $question,
+      ":answer" => $answer,
+      ":feedback" => $feedback
+    );
+    $question_id = $db->lastInsertId("id");
+    exec_sql_query($db, $sql, $params);
+    $sql = "INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (:question_id, :file_id, :quiz_id);";
+    $params = array(
+      ":question_id" => $question_id,
+      ":file_id" => $file_id,
+      ":quiz_id" => $quiz_id
+    );
+    exec_sql_query($db, $sql, $params);
+
+
     } else {
       record_general_message("Your file was not uploaded. Try again.") ;
     }
 
 }
+
+if (isset($_POST['delete'])){
+  $deletedpage = filter_input(INPUT_POST, 'deletedpage', FILTER_SANITIZE_NUMBER_INT);
+  $sql = "select * from pages where id = :deletedpage;";
+  $params = array(
+    ":deletedpage" => $deletedpage,
+
+  );
+  $records = exec_sql_query($db, $sql, $params)->fetchAll();
+  $question_id = $records[0]['question_id'];
+  $sql = "DELETE from questions WHERE id = $question_id;";
+  exec_sql_query($db, $sql);
+
+  $photo_id = $records[0]['photo_id'];
+  $sql = "select * from photos where id = $photo_id;";
+  $records = exec_sql_query($db, $sql)->fetchAll();
+  $file_ext = $records[0]['file_ext'];
+  unlink("img/".$photo_id.".".$file_ext);
+  $sql = "DELETE from photos WHERE id = $photo_id;";
+  exec_sql_query($db, $sql);
+
+  $sql = "DELETE from pages WHERE id = $deletedpage;";
+  exec_sql_query($db, $sql);
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +92,7 @@ if (isset($_POST['submit'])){
     <title>Add/Delete Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="dstyles.css" />
+
     <script src="main.js"></script>
   </head>
   <body>
@@ -54,17 +100,17 @@ if (isset($_POST['submit'])){
 
     <form method = 'get' action="add-deletepage.php">
     <?php
-      echo "<select class='selectQuiz' name='chooseAQuiz' onchange='if(this.value != $quiz) { this.form.submit(); }'>";
+      echo "<select class='selectQuiz' name='chooseAQuiz' onchange='if(this.value != $quiz_id) { this.form.submit(); }'>";
 
         $sql = 'SELECT id, name FROM quizzes;';
         $records = exec_sql_query($db, $sql)->fetchAll();
         foreach ($records as $record) {
-          $quizid = $record['id'];
+          $thisquizid = $record['id'];
           $quizname = $record['name'];
-          if ($quiz == $quizid){
-            echo "<option value=$quizid selected>$quizname</option>";
+          if ($quiz_id == $thisquizid){
+            echo "<option value=$thisquizid selected>$quizname</option>";
           } else {
-            echo "<option value=$quizid>$quizname</option>";
+            echo "<option value=$thisquizid>$quizname</option>";
           }
         }
         ?>
@@ -88,10 +134,8 @@ if (isset($_POST['submit'])){
           <div>
             <label for="factormyth"></label>
             <div>
-              <form name="factormyth" action="" method="post">
-              <input type="radio" name = "fact/myth" value="fact" /> Fact
-              <input type="radio" name = "fact/myth" value="myth" /> Myth
-              </form>
+              <input type="radio" name = "answer" value="fact" /> Fact
+              <input type="radio" name = "answer" value="myth" /> Myth
             </div>
             <br>
           </div>
@@ -116,33 +160,47 @@ if (isset($_POST['submit'])){
           <input
             class="saveChanges"
             type="submit"
-            name="submit"
+            name="add"
             value="Save changes"
-            id="submit"
           />
         </div>
       </form>
-      <form>
+      <form action="add-deletepage.php" method="post" enctype="multipart/form-data">
         <div>
           <h3>Delete a Page</h3>
           <div class="selectElts">
             <label for="deletePage"></label>
-            <select name="deletePage">
-              <option value="selectPage">-- Select a page --</option>
-              <option value="p1">p1</option>
-              <option value="p2">p2</option>
-              <option value="p3">p3</option>
-              <option value="p4">p4</option>
-              <option value="p5">p5</option>
-            </select>
+              <?php
+              $sql = "select * from pages where quiz_id = $quiz_id;";
+              $records = exec_sql_query($db, $sql)->fetchAll();
+              foreach ($records as $record){
+                $page_id = $record['id'];
+
+                $photo_id = $record['photo_id'];
+                $sql = "select * from photos where id = $photo_id;";
+                $photorecords = exec_sql_query($db, $sql)->fetchAll();
+                $file_ext = $photorecords[0]['file_ext'];
+                $alt_text = $photorecords[0]['alt_text'];
+
+                $question_id = $record['question_id'];
+                $sql = "select * from questions where id = $question_id;";
+                $questionrecords = exec_sql_query($db, $sql)->fetchAll();
+                $question = $questionrecords[0]['question'];
+                echo"<input type='radio' name='deletedpage' value=$page_id>
+                    <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
+                    <div>$question</div>
+                    <br>
+                ";
+              }
+
+               ?>
           </div>
           <div>
             <input
               class="saveChanges"
               type="submit"
-              name="submit"
+              name="delete"
               value="Save changes"
-              id="submit"
             />
           </div>
         </div>
