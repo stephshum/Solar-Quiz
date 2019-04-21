@@ -2,7 +2,6 @@
 
 include('includes/init.php');
 
-
 if (isset($_GET['chooseAQuiz'])) {
   $quiz_id = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
 } else {
@@ -14,6 +13,8 @@ if (isset($_GET['chooseAQuiz'])) {
 
 if (isset($_GET['selectedpage'])) {
   $page_id = trim(filter_input(INPUT_GET, 'selectedpage', FILTER_SANITIZE_NUMBER_INT));
+} elseif (isset($_POST['inputtedpage_id'])){
+  $page_id = trim(filter_input(INPUT_POST, 'inputtedpage_id', FILTER_SANITIZE_NUMBER_INT));
 } else {
   $sql = "SELECT * FROM pages where quiz_id = $quiz_id;";
   $records = exec_sql_query($db, $sql)->fetchAll();
@@ -37,6 +38,7 @@ $selectedfeedback = $records[0]['feedback'];
 $sql = "select * from photos where id = $selected_photo_id;";
 $records = exec_sql_query($db, $sql)->fetchAll();
 $selectedalt_text = $records[0]['alt_text'];
+$selectedfile_ext = $records[0]['file_ext'];
 
 
 if (isset($_POST['update'])){
@@ -44,39 +46,51 @@ if (isset($_POST['update'])){
   $selectedquestion = $question;
   $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
   $selectedfeedback = $feedback;
-  $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
-  $selectedalt_text = $alt_text;
   $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_STRING);
   $selectedanswer = $answer;
   $inputtedquestionid = filter_input(INPUT_POST, 'inputtedquestionid', FILTER_SANITIZE_STRING);
-  // if (isset($_FILES['uploadImage'])) {
-  //
-  // $upload_file = $_FILES['uploadImage'];
-  // if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
-  //   $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
-  //   $file_name = preg_replace("/[^a-zA-Z0-9]+/", "", (basename($upload_file["name"])));
-  //   $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :alt_text);";
-  //   $params = array(
-  //     ":file_name" => $file_name,
-  //     ":file_extension" => $file_extension,
-  //     ":alt_text" => $alt_text
-  //   );
-  //   if (exec_sql_query($db, $sql, $params)){
-  //       $file_id = $db->lastInsertId("id");
-  //       move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
-  //       record_general_message("Your file was uploaded!") ;
-  //     } else {
-  //       record_general_message("Your file was not uploaded. Try again.") ;
-  //     }
-  //
-  //
-  //
-  //   } else {
-  //     record_general_message("Your file was not uploaded. Try again.") ;
-  //   }
-  // }
+  $inputtedphoto_id = filter_input(INPUT_POST, 'inputtedphoto_id', FILTER_SANITIZE_STRING);
+  $inputtedfile_ext = filter_input(INPUT_POST, 'inputtedfile_ext', FILTER_SANITIZE_STRING);
+  $inputtedpage_id = filter_input(INPUT_POST, 'inputtedpage_id', FILTER_SANITIZE_STRING);
+
+  if (isset($_FILES['uploadImage'])) {
+    $upload_file = $_FILES['uploadImage'];
+    if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
+      $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
+      $selectedalt_text = $alt_text;
+      unlink("img/".$inputtedphoto_id.".".$inputtedfile_ext);
+      $sql = "DELETE from photos WHERE id = $inputtedphoto_id;";
+      exec_sql_query($db, $sql);
+
+      $file_extension = strtolower(pathinfo($upload_file['name'], PATHINFO_EXTENSION));
+      $file_name = preg_replace("/[^a-zA-Z0-9]+/", "", (basename($upload_file["name"])));
+      $sql = "INSERT INTO photos (file_name, file_ext, alt_text) VALUES (:file_name, :file_extension, :alt_text);";
+      $params = array(
+        ":file_name" => $file_name,
+        ":file_extension" => $file_extension,
+        ":alt_text" => $alt_text
+      );
+      if (exec_sql_query($db, $sql, $params)){
+          $file_id = $db->lastInsertId("id");
+          move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
+          echo("<p>Your file was uploaded!<p>") ;
+          $sql = "UPDATE pages set photo_id=:file_id where id = $inputtedpage_id;";
+          // $sql = "INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (:question_id, :file_id, :quiz_id);";
+          $params = array(
+            ":file_id" => $file_id,
+          );
+          exec_sql_query($db, $sql, $params);
+        } else {
+          echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
+        }
+
+
+
+      } else {
+        echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
+      }
+  }
   $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $inputtedquestionid;";
-  // $sql = "INSERT INTO questions (question, answer, feedback) VALUES (:question, :answer, :feedback);";
 
   $params = array(
     ":question" => $question,
@@ -85,12 +99,7 @@ if (isset($_POST['update'])){
   );
   // $question_id = $db->lastInsertId("id");
   exec_sql_query($db, $sql, $params);
-  // $sql = "UPDATE pages set photo_id=:file_id where id = $page_id;";
-  // // $sql = "INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (:question_id, :file_id, :quiz_id);";
-  // $params = array(
-  //   ":file_id" => $file_id,
-  // );
-  // exec_sql_query($db, $sql, $params);
+
 
 }
 
@@ -156,6 +165,7 @@ if (isset($_POST['update'])){
               $questionrecords = exec_sql_query($db, $sql)->fetchAll();
               $question = $questionrecords[0]['question'];
               if ($thispage_id == $page_id) {
+
                 echo"<input type='radio' name='selectedpage' value=$thispage_id checked='checked' onchange ='if(this.value != $page_id) { this.form.submit(); }'>
                     <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
                     <div>$question</div>
@@ -175,9 +185,8 @@ if (isset($_POST['update'])){
           </div>
         </div>
       </form>
-      <form action="editpage.php" method="post">
+      <form action="editpage.php" method="post" enctype="multipart/form-data">
 
-        <div>
           <input type = "hidden" name = "MAX_FILE_SIZE" value = "1000000">
           <div>
             <label for="question">Question</label>
@@ -205,7 +214,6 @@ if (isset($_POST['update'])){
             <br>
             <textarea name="feedback"><?php echo $selectedfeedback; ?></textarea>
           </div>
-          <div>
             <div>
               <label for="uploadImage"
                 >Image (*Note: If no file is selected, current image will remain
@@ -217,6 +225,10 @@ if (isset($_POST['update'])){
             <div>
               <?php
               echo "<input type=hidden id=inputtedquestionid name=inputtedquestionid value=$selected_question_id> ";
+              echo "<input type=hidden id=inputtedphoto_id name=inputtedphoto_id value=$selected_photo_id> ";
+              echo "<input type=hidden id=inputtedfile_ext name=inputtedfile_ext value=$selectedfile_ext> ";
+              echo "<input type=hidden id=inputtedpage_id name=inputtedpage_id value=$page_id> ";
+
               ?>
               <input
                 class="submitImage"
@@ -230,7 +242,6 @@ if (isset($_POST['update'])){
               <label id = "alt_textlabel" for="alt_text">Alt text (image description)</label>
               <textarea name="alt_text"><?php echo $selectedalt_text;?></textarea>
             </div>
-          </div>
           <div>
             <input
               class="saveChanges"
@@ -239,7 +250,6 @@ if (isset($_POST['update'])){
               value="Save changes"
             />
           </div>
-        </div>
       </form>
     </div>
   </body>

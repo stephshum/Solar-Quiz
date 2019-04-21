@@ -2,27 +2,6 @@
 
 const GALLERY_UPLOADS_PATH = "img/";
 
-$messages = array();
-
-function record_message($message){
-  global $messages;
-  array_push($messages, $message);
-}
-
-//this prints the main messages
-function print_messages(){
-  global $messages;
-  foreach ($messages as $message){
-    $filtered_message = htmlspecialchars($message);
-    echo "<p> $filtered_message </p>";
-  }
-}
-$general_messages = array();
-
-function record_general_message($message){
-  global $general_messages;
-  array_push($general_messages, $message);
-}
 
 // show database errors during development.
 function handle_db_error($exception) {
