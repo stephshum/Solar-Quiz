@@ -1,6 +1,5 @@
 <?php
 include('includes/init.php');
-
 if (isset($_GET['chooseAQuiz'])) {
   $quiz_id = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
 } else {
@@ -29,9 +28,9 @@ if (isset($_POST['add'])){
     if (exec_sql_query($db, $sql, $params)){
         $file_id = $db->lastInsertId("id");
         move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
-        record_general_message("Your file was uploaded!") ;
+        echo("<p>Your file was uploaded!</p>") ;
       } else {
-        record_general_message("Your file was not uploaded. Try again.") ;
+        echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
       }
     $sql = "INSERT INTO questions (question, answer, feedback) VALUES (:question, :answer, :feedback);";
     $params = array(
@@ -40,6 +39,7 @@ if (isset($_POST['add'])){
       ":feedback" => $feedback
     );
     $question_id = $db->lastInsertId("id");
+
     exec_sql_query($db, $sql, $params);
     $sql = "INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (:question_id, :file_id, :quiz_id);";
     $params = array(
@@ -51,7 +51,7 @@ if (isset($_POST['add'])){
 
 
     } else {
-      record_general_message("Your file was not uploaded. Try again.") ;
+      echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
     }
 
 }
