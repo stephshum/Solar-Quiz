@@ -29,7 +29,6 @@ $selected_question_id = $records[0]['question_id'];
 $selected_photo_id = $records[0]['photo_id'];
 
 $sql ="select * from questions where id = $selected_question_id;";
-var_dump($selected_question_id);
 $records = exec_sql_query($db, $sql)->fetchAll();
 $selectedquestion = $records[0]['question'];
 $selectedanswer = $records[0]['answer'];
@@ -42,9 +41,13 @@ $selectedalt_text = $records[0]['alt_text'];
 
 if (isset($_POST['update'])){
   $question = filter_input(INPUT_POST, 'question', FILTER_SANITIZE_STRING);
+  $selectedquestion = $question;
   $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
+  $selectedfeedback = $feedback;
   $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
+  $selectedalt_text = $alt_text;
   $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_STRING);
+  $selectedanswer = $answer;
   $inputtedquestionid = filter_input(INPUT_POST, 'inputtedquestionid', FILTER_SANITIZE_STRING);
   // if (isset($_FILES['uploadImage'])) {
   //
@@ -74,10 +77,6 @@ if (isset($_POST['update'])){
   // }
   $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $inputtedquestionid;";
   // $sql = "INSERT INTO questions (question, answer, feedback) VALUES (:question, :answer, :feedback);";
-  var_dump($question);
-  var_dump($answer);
-  var_dump($feedback);
-  var_dump($inputtedquestionid);
 
   $params = array(
     ":question" => $question,
