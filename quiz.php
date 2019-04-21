@@ -53,7 +53,7 @@ foreach ($records as $record) {
     $sql = "SELECT * FROM photos WHERE id = $photo_id;";
     $records = exec_sql_query($db, $sql)->fetchAll();
     foreach ($records as $record){
-      $file_name = $record["file_name"];
+      $file_id = $record["id"];
       $file_ext = $record["file_ext"];
       $alt_text = $record["alt_text"];
     }
@@ -83,7 +83,7 @@ foreach ($records as $record) {
       <div class="row">
 
         <div class="column">
-          <?php echo "<img src=img/$file_name class=image alt=$alt_text> "?>
+          <?php echo "<img src=img/$file_id.$file_ext class=image alt=$alt_text> "?>
         </div>
         <div class="column">
           <div class="white_square">

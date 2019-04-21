@@ -1,6 +1,6 @@
 <?php
 
-const GALLERY_UPLOADS_PATH = "uploads/";
+const GALLERY_UPLOADS_PATH = "img/";
 
 $messages = array();
 

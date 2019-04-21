@@ -32,22 +32,22 @@ INSERT INTO quizzes (name) VALUES ('heating');
 
 
 
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_1.png', 'png', 'Snowy Scene');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_2.png', 'png', 'Solar Panels');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_3.png', 'png', 'Notebook with Money Sign');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_4.png', 'png', 'Potted Plant');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_5.png', 'png', 'Assorted Tools');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_6.png', 'png', 'Roof Shingles');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('quiz_7.png', 'png', 'Downward Tilted Arrow');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('1.png', 'png', 'Snowy Scene');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('2.png', 'png', 'Solar Panels');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('3.png', 'png', 'Notebook with Money Sign');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('4.png', 'png', 'Potted Plant');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('5.png', 'png', 'Assorted Tools');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('6.png', 'png', 'Roof Shingles');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('7.png', 'png', 'Downward Tilted Arrow');
 
 
-INSERT INTO questions (question, answer, feedback) VALUES ('Tomkins County is too cloudy and snowy for solar to work', 'Myth', 'Yeah!');
-INSERT INTO questions (question, answer, feedback) VALUES ('I can use solar panels to power air conditioning, hot water heaters, and everything else that natural gas, electricity, and oil fuels', 'Fact', 'Yeah!');
-INSERT INTO questions (question, answer, feedback) VALUES ('Solar panels are too expensive', 'Myth', 'Yeah!');
-INSERT INTO questions (question, answer, feedback) VALUES ('Solar produces no pollution, making it one of the cleanest energy sources', 'Fact', 'Yeah!');
-INSERT INTO questions (question, answer, feedback) VALUES ('Solar panels require regular maintenance and will lower the value of my home', 'Myth', 'Yeah!');
-INSERT INTO questions (question, answer, feedback) VALUES ('Installing solar panels will put holes in my roof and cause roof damage', 'Myth', 'Yeah!');
-INSERT INTO questions (question, answer, feedback) VALUES ('Solar panel costs have dropped 80% since 2008', 'Fact', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Tomkins County is too cloudy and snowy for solar to work', 'myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('I can use solar panels to power air conditioning, hot water heaters, and everything else that natural gas, electricity, and oil fuels', 'fact', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar panels are too expensive', 'myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar produces no pollution, making it one of the cleanest energy sources', 'fact', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar panels require regular maintenance and will lower the value of my home', 'myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Installing solar panels will put holes in my roof and cause roof damage', 'myth', 'Yeah!');
+INSERT INTO questions (question, answer, feedback) VALUES ('Solar panel costs have dropped 80% since 2008', 'fact', 'Yeah!');
 
 INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (1,1,1);
 INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (2,2,4);
