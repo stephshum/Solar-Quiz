@@ -93,7 +93,7 @@ if (isset($_POST['delete'])){
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="dstyles.css" />
 
-    <script src="main.js"></script>
+    <script src="main.js">  </script>
   </head>
   <body>
     <h1>User Dashboard</h1>
@@ -165,35 +165,38 @@ if (isset($_POST['delete'])){
           />
         </div>
       </form>
-      <form action="add-deletepage.php" method="post" enctype="multipart/form-data">
-        <div>
+        <form onsubmit="return confirm('Are you sure you want to delete this page?');" action="add-deletepage.php" method="post" enctype="multipart/form-data">
           <h3>Delete a Page</h3>
           <div class="selectElts">
             <label for="deletePage"></label>
-              <?php
-              $sql = "select * from pages where quiz_id = $quiz_id;";
-              $records = exec_sql_query($db, $sql)->fetchAll();
-              foreach ($records as $record){
-                $page_id = $record['id'];
 
-                $photo_id = $record['photo_id'];
-                $sql = "select * from photos where id = $photo_id;";
-                $photorecords = exec_sql_query($db, $sql)->fetchAll();
-                $file_ext = $photorecords[0]['file_ext'];
-                $alt_text = $photorecords[0]['alt_text'];
+                <?php
+                $sql = "select * from pages where quiz_id = $quiz_id;";
+                $records = exec_sql_query($db, $sql)->fetchAll();
+                foreach ($records as $record){
+                  $page_id = $record['id'];
 
-                $question_id = $record['question_id'];
-                $sql = "select * from questions where id = $question_id;";
-                $questionrecords = exec_sql_query($db, $sql)->fetchAll();
-                $question = $questionrecords[0]['question'];
-                echo"<input type='radio' name='deletedpage' value=$page_id>
-                    <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
-                    <div>$question</div>
-                    <br>
-                ";
-              }
+                  $photo_id = $record['photo_id'];
+                  $sql = "select * from photos where id = $photo_id;";
+                  $photorecords = exec_sql_query($db, $sql)->fetchAll();
+                  $file_ext = $photorecords[0]['file_ext'];
+                  $alt_text = $photorecords[0]['alt_text'];
 
-               ?>
+                  $question_id = $record['question_id'];
+                  $sql = "select * from questions where id = $question_id;";
+                  $questionrecords = exec_sql_query($db, $sql)->fetchAll();
+                  $question = $questionrecords[0]['question'];
+                  echo"<input type='radio' name='deletedpage' value=$page_id>
+                      <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
+                      <div>$question</div>
+                      <br>
+                  ";
+                }
+
+                 ?>
+
+
+
           </div>
           <div>
             <input

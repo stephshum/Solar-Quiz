@@ -64,6 +64,10 @@
   padding: 100px;
 }
 
+.column .white_square{
+  margin-top: -8%;
+}
+
 .row:after {
   content: "";
   display: table;
@@ -200,3 +204,8 @@
 .formgrouping {
   padding-left: 200px;
 }
+
+
+.fa-circle{
+    margin: 1%;
+  }
