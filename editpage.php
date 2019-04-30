@@ -81,13 +81,13 @@ if (isset($_POST['update'])){
           );
           exec_sql_query($db, $sql, $params);
         } else {
-          echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
+          echo("<p class='alert alert-danger' role='alert'>Your file was not uploaded. Try again with a smaller file.</p>") ;
         }
 
 
 
       } else {
-        echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
+        echo("<p class='alert alert-danger' role='alert'>Your file was not uploaded. Try again with a smaller file.</p>") ;
       }
   }
   $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $inputtedquestionid;";
@@ -114,6 +114,7 @@ if (isset($_POST['update'])){
     <title>Edit Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="dstyles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="main.js"></script>
   </head>
   <body>
@@ -244,10 +245,10 @@ if (isset($_POST['update'])){
             </div>
           <div>
             <input
-              class="saveChanges"
+              class="saveChanges btn btn-primary"
               type="submit"
               name="update"
-              value="Save changes"
+              value="Save Changes"
             />
           </div>
       </form>
