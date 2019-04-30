@@ -165,18 +165,30 @@ if (isset($_POST['update'])){
               $sql = "select * from questions where id = $question_id;";
               $questionrecords = exec_sql_query($db, $sql)->fetchAll();
               $question = $questionrecords[0]['question'];
+              $answer = $questionrecords[0]['answer'];
+              $feedback = $questionrecords[0]['feedback'];
+
               if ($thispage_id == $page_id) {
 
                 echo"<input type='radio' name='selectedpage' value=$thispage_id checked='checked' onchange ='if(this.value != $page_id) { this.form.submit(); }'>
                     <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
-                    <div>$question</div>
+                    <div>Question: $question</div>
+                    <div>Answer: $answer</div>
+                    <div>Feedback: $feedback</div>
+                    <div>Alt Text: $alt_text</div>
+
+
                     <br>
                 ";
 
               } else {
                 echo"<input type='radio' name='selectedpage' value=$thispage_id onchange ='if(this.value != $page_id) { this.form.submit(); }'>
                     <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
-                    <div>$question</div>
+                    <div>Question: $question</div>
+                    <div>Answer: $answer</div>
+                    <div>Feedback: $feedback</div>
+                    <div>Alt Text: $alt_text</div>
+
                     <br>
                 ";
               }

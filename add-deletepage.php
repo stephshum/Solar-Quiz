@@ -187,9 +187,14 @@ if (isset($_POST['delete'])){
                   $sql = "select * from questions where id = $question_id;";
                   $questionrecords = exec_sql_query($db, $sql)->fetchAll();
                   $question = $questionrecords[0]['question'];
+                  $answer = $questionrecords[0]['answer'];
+                  $feedback = $questionrecords[0]['feedback'];
                   echo"<input type='radio' name='deletedpage' value=$page_id>
                       <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
-                      <div>$question</div>
+                      <div>Question: $question</div>
+                      <div>Answer: $answer</div>
+                      <div>Feedback: $feedback</div>
+                      <div>Alt Text: $alt_text</div>
                       <br>
                   ";
                 }
@@ -210,5 +215,7 @@ if (isset($_POST['delete'])){
         </div>
       </form>
     </div>
+
+</script>
   </body>
 </html>
