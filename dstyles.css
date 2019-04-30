@@ -35,9 +35,9 @@ input {
 }
 
 /* doesn't work?? */
-input [type="file"] {
+/* input [type="file"] {
   margin-left: 10%;
-}
+} */
 
 .topnav {
   background-color: #333;

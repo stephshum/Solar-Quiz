@@ -64,26 +64,25 @@ foreach ($records as $record) {
       $answer = $record["answer"];
     }
     ?>
-
+    <div class="center">
+      <?php
+      $place = 0;
+      while ($place < $current_place){
+        echo "<i class='fas fa-circle'></i>";
+        $place = $place + 1;
+      }
+      while ($place < $number_pages){
+        echo "<i class='far fa-circle'></i>";
+        $place = $place + 1;
+      }
+       ?>
+     </div>
 
       <div class="row">
 
         <div class="column">
           <?php echo "<img src=img/$file_id.$file_ext class=image alt=$alt_text> "?>
         </div>
-        <div class="center">
-          <?php
-          $place = 0;
-          while ($place < $current_place){
-            echo "<i class='fas fa-circle'></i>";
-            $place = $place + 1;
-          }
-          while ($place < $number_pages){
-            echo "<i class='far fa-circle'></i>";
-            $place = $place + 1;
-          }
-           ?>
-         </div>
         <div class="column">
           <div class="white_square">
             <div class="internal_container">
