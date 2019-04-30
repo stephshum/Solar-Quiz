@@ -73,7 +73,7 @@ if (isset($_POST['update'])){
       if (exec_sql_query($db, $sql, $params)){
           $file_id = $db->lastInsertId("id");
           move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
-          echo("<p>Your file was uploaded!<p>") ;
+          echo("<p class='alert alert-success' role='alert'>Your file was uploaded!<p>") ;
           $sql = "UPDATE pages set photo_id=:file_id where id = $inputtedpage_id;";
           // $sql = "INSERT INTO pages (question_id, photo_id, quiz_id) VALUES (:question_id, :file_id, :quiz_id);";
           $params = array(
@@ -81,13 +81,13 @@ if (isset($_POST['update'])){
           );
           exec_sql_query($db, $sql, $params);
         } else {
-          echo("<p class='alert alert-danger' role='alert'>Your file was not uploaded. Try again with a smaller file.</p>") ;
+          echo("<p class='alert alert-warning' role='alert'>No file was uploaded and alt text not changed. If you tried to upload a file, try again with a smaller file.</p>") ;
         }
 
 
 
       } else {
-        echo("<p class='alert alert-danger' role='alert'>Your file was not uploaded. Try again with a smaller file.</p>") ;
+        echo("<p class='alert alert-warning' role='alert'>No file was uploaded and alt text not changed. If you tried to upload a file, try again with a smaller file.</p>") ;
       }
   }
   $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $inputtedquestionid;";
@@ -98,8 +98,10 @@ if (isset($_POST['update'])){
     ":feedback" => $feedback
   );
   // $question_id = $db->lastInsertId("id");
-  exec_sql_query($db, $sql, $params);
+  if (exec_sql_query($db, $sql, $params)){
+      echo("<p class='alert alert-success' role='alert'>Question and feedback succesfully saved.</p>") ;
 
+  };
 
 }
 
