@@ -47,6 +47,9 @@ if (isset($_POST['update'])){
   $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_STRING);
   $selectedfeedback = $feedback;
   $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_STRING);
+  $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
+  $selectedalt_text = $alt_text;
+
   $selectedanswer = $answer;
   $inputtedquestionid = filter_input(INPUT_POST, 'inputtedquestionid', FILTER_SANITIZE_STRING);
   $inputtedphoto_id = filter_input(INPUT_POST, 'inputtedphoto_id', FILTER_SANITIZE_STRING);
@@ -56,8 +59,6 @@ if (isset($_POST['update'])){
   if (isset($_FILES['uploadImage'])) {
     $upload_file = $_FILES['uploadImage'];
     if ($_FILES['uploadImage']['error'] === UPLOAD_ERR_OK){
-      $alt_text = filter_input(INPUT_POST, 'alt_text', FILTER_SANITIZE_STRING);
-      $selectedalt_text = $alt_text;
       unlink("img/".$inputtedphoto_id.".".$inputtedfile_ext);
       $sql = "DELETE from photos WHERE id = $inputtedphoto_id;";
       exec_sql_query($db, $sql);
@@ -80,14 +81,15 @@ if (isset($_POST['update'])){
             ":file_id" => $file_id,
           );
           exec_sql_query($db, $sql, $params);
-        } else {
-          echo("<p class='alert alert-warning' role='alert'>No file was uploaded and alt text not changed. If you tried to upload a file, try again with a smaller file.</p>") ;
         }
 
-
-
       } else {
-        echo("<p class='alert alert-warning' role='alert'>No file was uploaded and alt text not changed. If you tried to upload a file, try again with a smaller file.</p>") ;
+          $sql = "UPDATE photos set alt_text = :alt_text where id = $inputtedphoto_id";
+          $params = array(
+              ":alt_text" => $alt_text
+          );
+          exec_sql_query($db, $sql, $params);
+        echo("<p class='alert alert-warning' role='alert'> No file was uploaded. If you were trying to add a file, try again with a smaller file.</p>") ;
       }
   }
   $sql = "UPDATE questions set question = :question, answer = :answer, feedback = :feedback where id = $inputtedquestionid;";
@@ -99,7 +101,7 @@ if (isset($_POST['update'])){
   );
   // $question_id = $db->lastInsertId("id");
   if (exec_sql_query($db, $sql, $params)){
-      echo("<p class='alert alert-success' role='alert'>Question and feedback succesfully saved.</p>") ;
+      echo("<p class='alert alert-success' role='alert'>Text succesfully saved.</p>") ;
 
   };
 
