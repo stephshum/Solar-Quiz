@@ -28,9 +28,9 @@ if (isset($_POST['add'])){
     if (exec_sql_query($db, $sql, $params)){
         $file_id = $db->lastInsertId("id");
         move_uploaded_file($upload_file["tmp_name"], GALLERY_UPLOADS_PATH.$file_id.".$file_extension");
-        echo("<p>Your file was uploaded!</p>") ;
+        echo("<p class='alert alert-success' role='alert'>Your file was uploaded!</p>") ;
       } else {
-        echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
+        echo("<p class='alert alert-danger' role='alert'>Your file was not uploaded. Try again with a smaller file.</p>") ;
       }
     $sql = "INSERT INTO questions (question, answer, feedback) VALUES (:question, :answer, :feedback);";
     $params = array(
@@ -51,7 +51,7 @@ if (isset($_POST['add'])){
 
 
     } else {
-      echo("<p>Your file was not uploaded. Try again with a smaller file.</p>") ;
+      echo("<p class='errormessage'>Your file was not uploaded. Try again with a smaller file.</p>") ;
     }
 
 }
@@ -92,6 +92,7 @@ if (isset($_POST['delete'])){
     <title>Add/Delete Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="dstyles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <script src="main.js">  </script>
   </head>
@@ -158,10 +159,10 @@ if (isset($_POST['delete'])){
             <textarea name="alt_text"></textarea>
           </div>
           <input
-            class="saveChanges"
+            class="saveChanges btn btn-success"
             type="submit"
             name="add"
-            value="Save changes"
+            value="Add Page"
           />
         </div>
       </form>
@@ -200,10 +201,10 @@ if (isset($_POST['delete'])){
           </div>
           <div>
             <input
-              class="saveChanges"
+              class="saveChanges btn btn-danger"
               type="submit"
               name="delete"
-              value="Save changes"
+              value="Delete Page"
             />
           </div>
         </div>
