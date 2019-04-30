@@ -193,24 +193,24 @@
 }
 
 .quizselect {
-  width: 146px;
-  height: 122px;
+  width: 500px;
+  height: 417.8082191695px;
   padding: 29.5px;
 
 }
 
 .selectquiztitle {
-  width: 526.5px;
-  height: 59.5px;
+  width: 2000px;
+  height: 100px;
   font-family: Arial, Helvetica, SFProText;
-  font-size: 50px;
+  font-size: 90px;
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: 0.2px;
   color: #000000;
-  padding: 90px;
+  padding: 160px 0px 90px 35px;
 }
 
 .topicrow:after {
@@ -220,7 +220,7 @@
 }
 
 .formgrouping {
-  padding-left: 200px;
+  padding-left: 170px;
 }
 
 
