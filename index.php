@@ -15,18 +15,7 @@ include('includes/init.php');
     <div class="column">
       <div class="intro_title"> Fact or Myth </div>
       <div class="intro_description"> Are you aware of the common environmental misconceptions? What is true or false?</div>
-      <form method="get" action="quiz.php">
-        <select class="selectQuiz" name="chooseAQuiz">
-          <?php
-          $sql = 'SELECT name FROM quizzes;';
-          $records = exec_sql_query($db, $sql)->fetchAll();
-          foreach ($records as $record) {
-            $quizname = $record['name'];
-            echo "<option value=$quizname>$quizname</option>";
-          }
-          ?>
-
-        </select>
+      <form method="get" action="selectquiz.php">
         <button class="intro_button">
           <div class="intro_button_text">Let’s Find Out </div>
         </button>

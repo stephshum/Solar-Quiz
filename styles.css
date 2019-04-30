@@ -174,6 +174,56 @@
 
 }
 
+/* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
+.quizselect {
+  width: 146px;
+  height: 122px;
+  padding: 29.5px;
+
+}
+
+.selectquiztitle {
+  width: 526.5px;
+  height: 59.5px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 50px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  color: #000000;
+  padding: 90px;
+}
+
+.topicrow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.formgrouping {
+  padding-left: 200px;
+}
+
+
 .fa-circle{
     margin: 1%;
     font-size: 40px !important;
