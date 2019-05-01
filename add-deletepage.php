@@ -57,7 +57,14 @@ if (isset($_POST['add'])){
 }
 
 if (isset($_POST['delete'])){
-  $deletedpage = filter_input(INPUT_POST, 'deletedpage', FILTER_SANITIZE_NUMBER_INT);
+    if (isset($_POST['deletedpage'])){
+        $deletedpage = filter_input(INPUT_POST, 'deletedpage', FILTER_SANITIZE_NUMBER_INT);
+
+
+
+
+
+
   $sql = "select * from pages where id = :deletedpage;";
   $params = array(
     ":deletedpage" => $deletedpage,
@@ -80,6 +87,9 @@ if (isset($_POST['delete'])){
   exec_sql_query($db, $sql);
 
   echo("<p class='alert alert-success' role='alert'>File successfully deleted.</p>") ;
+} else {
+    echo("<p class='alert alert-danger' role='alert'>Please select a page to delete.</p>") ;
+}
 
 }
 
