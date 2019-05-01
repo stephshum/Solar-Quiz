@@ -81,7 +81,8 @@ foreach ($records as $record) {
       <div class="row">
 
         <div class="column">
-          <?php echo "<img src=img/$file_id.$file_ext class=image alt=$alt_text> "?>
+          <?php echo "<img src=img/$quiz_name$file_id.$file_ext class=image alt=$alt_text> ";
+          echo "$file_id";?>
         </div>
         <div class="column">
           <div class="white_square">
