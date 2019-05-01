@@ -25,20 +25,21 @@ CREATE TABLE `quizzes` (
 );
 
 INSERT INTO quizzes (name) VALUES ('solar');
-INSERT INTO quizzes (name) VALUES ('thermal');
+INSERT INTO quizzes (name) VALUES ('DIY');
+INSERT INTO quizzes (name) VALUES ('insulation');
 INSERT INTO quizzes (name) VALUES ('lighting');
-INSERT INTO quizzes (name) VALUES ('window');
-INSERT INTO quizzes (name) VALUES ('heating');
+INSERT INTO quizzes (name) VALUES ('renewable heating');
+INSERT INTO quizzes (name) VALUES ('windows');
 
 
 
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('1.png', 'png', 'Snowy Scene');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('2.png', 'png', 'Solar Panels');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('3.png', 'png', 'Notebook with Money Sign');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('4.png', 'png', 'Potted Plant');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('5.png', 'png', 'Assorted Tools');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('6.png', 'png', 'Roof Shingles');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('7.png', 'png', 'Downward Tilted Arrow');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar1.png', 'png', 'Snowy Scene');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar2.png', 'png', 'Solar Panels');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar3.png', 'png', 'Notebook with Money Sign');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar4.png', 'png', 'Potted Plant');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar5.png', 'png', 'Assorted Tools');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar6.png', 'png', 'Roof Shingles');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar7.png', 'png', 'Downward Tilted Arrow');
 
 
 INSERT INTO questions (question, answer, feedback) VALUES ('Tomkins County is too cloudy and snowy for solar to work', 'myth', 'Yeah!');
