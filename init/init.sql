@@ -24,22 +24,25 @@ CREATE TABLE `quizzes` (
 	`name`	TEXT NOT NULL UNIQUE
 );
 
-INSERT INTO quizzes (name) VALUES ('solar');
-INSERT INTO quizzes (name) VALUES ('insulation');
+
 INSERT INTO quizzes (name) VALUES ('DIY');
+INSERT INTO quizzes (name) VALUES ('insulation');
 INSERT INTO quizzes (name) VALUES ('lighting');
-INSERT INTO quizzes (name) VALUES ('renewable heating');
+INSERT INTO quizzes (name) VALUES ('renewableheating');
+INSERT INTO quizzes (name) VALUES ('solar');
 INSERT INTO quizzes (name) VALUES ('windows');
 
 
-
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar1.png', 'png', 'Snowy Scene');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar2.png', 'png', 'Solar Panels');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar3.png', 'png', 'Notebook with Money Sign');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar4.png', 'png', 'Potted Plant');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar5.png', 'png', 'Assorted Tools');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar6.png', 'png', 'Roof Shingles');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar7.png', 'png', 'Downward Tilted Arrow');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY1.png', 'png', 'House in winter environment');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY2.png', 'png', 'Worker installing insulation');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY3.png', 'png', 'Home-owner reviewing and paying energy bills');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY4.png', 'png', 'Worker installing spray foam insulation');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY5.png', 'png', 'Home-owner meditating in a room that is sound-protected by insulation');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY6.png', 'png', 'Bulk quantities of commercial insulation, pre-installed');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY7.png', 'png', 'Samples of a variety of insulation types');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY8.png', 'png', 'Home in a healthy natural environment');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY9.png', 'png', 'Exposed fiberglass insulation');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY10.png', 'png', 'Insulation with a vapor barrier');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('insulation1.png', 'png', 'House in winter environment');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('insulation2.png', 'png', 'Worker installing insulation');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('insulation3.png', 'png', 'Home-owner reviewing and paying energy bills');
@@ -70,6 +73,13 @@ INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('renewableheating7.pn
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('renewableheating8.png', 'png', 'Home-owner reviewing and paying energy bills');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('renewableheating9.png', 'png', 'Outdoor heat pump unit in winter weather');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('renewableheating10.png', 'png', 'Home-owners bothered by loud sound');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar1.png', 'png', 'Snowy Scene');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar2.png', 'png', 'Solar Panels');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar3.png', 'png', 'Notebook with Money Sign');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar4.png', 'png', 'Potted Plant');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar5.png', 'png', 'Assorted Tools');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar6.png', 'png', 'Roof Shingles');
+INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('solar7.png', 'png', 'Downward Tilted Arrow');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('windows1.png', 'png', 'Thermal imager showing heat loss through windows');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('windows2.png', 'png', 'Workers installing a new window');
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('windows3.png', 'png', 'Home-owner caulking the edges of their home window');
