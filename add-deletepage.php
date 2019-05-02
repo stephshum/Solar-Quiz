@@ -2,6 +2,8 @@
 include('includes/init.php');
 if (isset($_GET['chooseAQuiz'])) {
   $quiz_id = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
+} elseif (isset($_POST['chooseAQuiz'])) {
+    $quiz_id = trim(filter_input(INPUT_POST, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
 } else {
   $sql = 'SELECT id, name FROM quizzes;';
   $records = exec_sql_query($db, $sql)->fetchAll();
@@ -170,6 +172,10 @@ if (isset($_POST['delete'])){
             <label id = "alt_textlabel" for="alt_text">Alt text (image description)</label>
             <textarea name="alt_text"></textarea>
           </div>
+          <?php
+          echo "<input type=hidden id=chooseAQuiz name=chooseAQuiz value=$quiz_id> ";
+          ?>
+
           <input
             class="saveChanges btn btn-success"
             type="submit"
@@ -216,6 +222,9 @@ if (isset($_POST['delete'])){
 
 
           </div>
+          <?php
+          echo "<input type=hidden id=chooseAQuiz name=chooseAQuiz value=$quiz_id> ";
+          ?>
           <div>
             <input
               class="saveChanges btn btn-danger"

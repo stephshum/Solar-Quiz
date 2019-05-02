@@ -92,16 +92,7 @@ INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('49.jpg', 'jpg', 'Ins
 INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('50.jpeg', 'jpeg', 'Old home window');
 
 
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY1.png', 'png', 'House in winter environment');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY2.png', 'png', 'Worker installing insulation');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY3.png', 'png', 'Home-owner reviewing and paying energy bills');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY4.png', 'png', 'Worker installing spray foam insulation');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY5.png', 'png', 'Home-owner meditating in a room that is sound-protected by insulation');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY6.png', 'png', 'Bulk quantities of commercial insulation, pre-installed');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY7.png', 'png', 'Samples of a variety of insulation types');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY8.png', 'png', 'Home in a healthy natural environment');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY9.png', 'png', 'Exposed fiberglass insulation');
-INSERT INTO photos (file_name, file_ext, alt_text) VALUES ('DIY10.png', 'png', 'Insulation with a vapor barrier');
+
 
 
 INSERT INTO questions (question, answer, feedback) VALUES ('You only need insulation if you live in a cold place.', 'myth', 'Insulation will keep your home warm in the winter and cool in the summer!');
