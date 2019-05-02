@@ -200,7 +200,7 @@ if (isset($_POST['delete'])){
                   $questionrecords = exec_sql_query($db, $sql)->fetchAll();
                   $question = $questionrecords[0]['question'];
                   echo"<input type='radio' name='deletedpage' value=$page_id>
-                      <img src='img/$quizname$photo_id.$file_ext' class=image alt='$alt_text'>
+                      <img src='img/$photo_id.$file_ext' class=image alt='$alt_text'>
                       <div>$question</div>
                       <br>
                   ";
