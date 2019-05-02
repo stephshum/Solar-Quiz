@@ -71,7 +71,15 @@
   object-fit: contain;
   margin-left: -20px;
 }
-
+.questionimage {
+    width: 800px;
+    object-fit: contain;
+    margin-left: -20px;
+    height: 631px;
+    border-radius: 7.5px;
+    box-shadow: 0 2px 4px 0 #9b9b9b;
+    padding: 0px 50px 0px 50px;
+}
 .column {
   float: left;
   width: 30%;

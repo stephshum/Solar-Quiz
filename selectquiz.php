@@ -26,17 +26,17 @@ include('includes/init.php');
       <img class="quizselect" src="img/Category_DIY.png">
     </label>
     <label>
-      <input type="radio" name="chooseAQuiz" value="solar" onchange ='autoSubmit()'>
+      <input type="radio" name="chooseAQuiz" value="insulation" onchange ='autoSubmit()'>
       <img class="quizselect" src="img/Category_Insulation.png">
     </label>
     <label>
-      <input type="radio" name="chooseAQuiz" value="solar" onchange ='autoSubmit()'>
+      <input type="radio" name="chooseAQuiz" value="lighting" onchange ='autoSubmit()'>
       <img class="quizselect" src="img/Category_Lighting.png">
     </label>
   </div>
   <div class="topicrow">
     <label>
-      <input type="radio" name="chooseAQuiz" value="solar" onchange ='autoSubmit()'>
+      <input type="radio" name="chooseAQuiz" value="heating" onchange ='autoSubmit()'>
       <img class="quizselect" src="img/Category_RenewableHeating.png">
     </label>
     <label>
@@ -44,7 +44,7 @@ include('includes/init.php');
       <img class="quizselect" src="img/Category_Solar.png">
     </label>
     <label>
-      <input type="radio" name="chooseAQuiz" value="window" onchange ='autoSubmit()'>
+      <input type="radio" name="chooseAQuiz" value="windows" onchange ='autoSubmit()'>
       <img class="quizselect" src="img/Category_Windows.png">
     </label>
   </form>
