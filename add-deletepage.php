@@ -51,13 +51,20 @@ if (isset($_POST['add'])){
 
 
     } else {
-      echo("<p class='errormessage'>Your file was not uploaded. Try again with a smaller file.</p>") ;
+      echo("<p class='alert alert-danger' role='alert'>Your file was not uploaded. Try again with a smaller file.</p>") ;
     }
 
 }
 
 if (isset($_POST['delete'])){
-  $deletedpage = filter_input(INPUT_POST, 'deletedpage', FILTER_SANITIZE_NUMBER_INT);
+    if (isset($_POST['deletedpage'])){
+        $deletedpage = filter_input(INPUT_POST, 'deletedpage', FILTER_SANITIZE_NUMBER_INT);
+
+
+
+
+
+
   $sql = "select * from pages where id = :deletedpage;";
   $params = array(
     ":deletedpage" => $deletedpage,
@@ -78,6 +85,11 @@ if (isset($_POST['delete'])){
 
   $sql = "DELETE from pages WHERE id = $deletedpage;";
   exec_sql_query($db, $sql);
+
+  echo("<p class='alert alert-success' role='alert'>File successfully deleted.</p>") ;
+} else {
+    echo("<p class='alert alert-danger' role='alert'>Please select a page to delete.</p>") ;
+}
 
 }
 
