@@ -22,7 +22,7 @@ include('includes/init.php');
   <form method="get" action="quiz.php" id="quizform" name='quizform'>
     <div class="topicrow">
     <label>
-      <input type="radio" name="chooseAQuiz" value="solar" onchange ='autoSubmit()'>
+      <input type="radio" name="chooseAQuiz" value="DIY" onchange ='autoSubmit()'>
       <img class="quizselect" src="img/Category_DIY.png">
     </label>
     <label>
