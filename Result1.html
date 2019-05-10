@@ -22,7 +22,7 @@ a<!DOCTYPE html>
       <div class = "white_square" id="white_square">
         <div class = "internal_container">
 
-      <div class="Tomkins-County-is-to" id="Tompkins"> You got all questions right. Are you a solar engineer? Why are you here?. </div>
+      <div class="Tomkins-County-is-to" id="Tompkins"> Nice try! </div>
 
       <button class="fact_button" type="button" id="fb1" onclick="window.location.href='index.php'" ><div class="Fact"> Restart</div></button>
 
@@ -60,7 +60,7 @@ a<!DOCTYPE html>
 <script>
 var score=parseInt(sessionStorage.getItem("score"));
 var count=parseInt(sessionStorage.getItem("count"));
-var percent=score/count*100;
+var percent=Math.floor(score/count*100);
 
   document.getElementById('percentage').innerHTML = percent+"%";
 

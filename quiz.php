@@ -156,7 +156,7 @@ foreach ($records as $record) {
 
         setTimeout( function () {
             form.submit();
-        }, );
+        },2000 );
     });
   }
 
