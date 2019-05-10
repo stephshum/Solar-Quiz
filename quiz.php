@@ -39,6 +39,9 @@ foreach ($records as $record) {
     <title>Fact or Myth</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="Reply.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 
   </head>
 
@@ -62,6 +65,7 @@ foreach ($records as $record) {
     foreach($records as $record){
       $question = $record["question"];
       $answer = $record["answer"];
+      $feedback = $record["feedback"];
     }
     ?>
     <div class="center">
@@ -87,31 +91,76 @@ foreach ($records as $record) {
           <div class="white_square">
             <div class="internal_container">
               <?php
-              echo "<div class=question> $question </div>";
+              echo "<div class=question id=question> $question </div>";
               $sql = "select max(id) from pages where quiz_id = (SELECT id FROM quizzes WHERE quizzes.name = '$quiz_name');";
               $records = exec_sql_query($db, $sql)->fetchAll();
               foreach ($records as $record){
                 $last_page = $record["max(id)"];
               };
+              $score=0;
+              echo "<div id='score' value=$score <p1> $score </p1></div>";
               if ($last_page == $page_number) {
-                echo "<form method=get action=emailform.html>";
+                // echo "<script> final(); </script>";
+                echo "<form method=get action=Result1.html>";
+
               } else {
-                echo "<form method=get action=quiz.php>";
+                echo "<form method=get id='my_form' action=quiz.php>";
               }
               ?>
-                <button class="fact_button fact">Fact</button>
-                <button class="myth_button myth">Myth</button>
+              <?php
+                echo "<button class='fact_button fact' id='fact_button' value='fact' onclick=checkfact('$answer')>Fact</button>";
+                echo "<button class='myth_button myth' id='myth_button' value='myth' onclick=checkmyth('$answer')>Myth</button>";
+              ?>
                 <?php
                 echo "<input type=hidden id=pageid name=pageid value=$page_number> ";
                 echo "<input type=hidden id=chooseAQuiz name=chooseAQuiz value=$quiz_name> ";
                 echo "<input type=hidden id=currentplace name=currentplace value=$current_place> ";
                 ?>
-
-              </form>
+                <?php
+                echo "<div id='reply' <p1> $feedback </p1></div>";
+                 ?>
+                <div id = "correct_pic">
+                  <img src = "correct.png" id = "correct">
+                </div>
+                <div id = "wrong_pic">
+                  <img src = "wrong.png" id="wrong">
+                </div>
             </div>
           </div>
         </div>
       </div>
+      <script>
+      function checkfact (answer) {
+      $('form').submit( function(event) {
+          var formId = this.id,
+              form = this;
+              factcheck(answer);
+
+
+          event.preventDefault();
+
+          setTimeout( function () {
+              form.submit();
+          }, 2000);
+      });
+    }
+
+    function checkmyth (answer) {
+    $('form').submit( function(event) {
+        var formId = this.id,
+            form = this;
+            mythcheck(answer);
+
+
+        event.preventDefault();
+
+        setTimeout( function () {
+            form.submit();
+        }, );
+    });
+  }
+
+      </script>
   </body>
 
   </html>

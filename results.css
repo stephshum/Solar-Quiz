@@ -1,0 +1,247 @@
+ .Fact-or-Myth {
+  width: 300px;
+  height: 59.5px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 50px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  color: #000000;
+  padding-bottom: 10px
+}
+
+.Are-you-aware-of-the {
+  width: 428px;
+  height: 87px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+}
+
+.Lets-Find-Out {
+  width: 194.5px;
+  height: 20px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 17px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.Fact-vs-Myth-Image {
+  width: 448px;
+  height: 352px;
+  object-fit: contain;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 100px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row {
+  padding-top: 70px
+}
+
+.Tomkins-County-is-to {
+  width: 700px;
+  height: 70px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 50px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+  padding-bottom: 250px;
+  margin: 40px;
+}
+
+.Fact {
+  width: 132.7px;
+  height: 20px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 30px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--gunmetal);
+  position: relative;
+  left: 75px;
+}
+
+.Myth {
+  width: 132.7px;
+  height: 20px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 30px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  left: 75px;
+}
+
+
+.Rectangle-3 {
+  width: 448px;
+  height: 352px;
+  border-radius: 7.5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.Rectangle-3-Copy {
+  width: 300px;
+  height: 48px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  background-color: #000000;
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 50px;
+}
+
+.fact_button {
+  width: 330px;
+  height: 100px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(66, 75, 90, 0.4);
+  background-color: #ffffff;
+  position: relative;
+  left: 50px;
+}
+
+.myth_button {
+  width: 330px;
+  height: 100px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px 0 rgba(66, 75, 90, 0.4);
+  background-color: #424b5a;
+  position: relative;
+  left: 50px;
+}
+
+.white_square {
+  position: relative;
+  left:160px;
+  right:0px;
+  top:190px;
+  width: 800px;
+  height: 631px;
+  border-radius: 7.5px;
+  box-shadow: 0 2px 4px 0 #9b9b9b;
+  background-color: #ffffff;
+  object-fit: contain;
+  padding: 0px 50px 0px 8px;
+
+
+}
+
+.internal_container {
+  padding: 40px
+}
+
+#feedback{
+  position: relative;
+  left:785px;
+  bottom: 350px;
+  visibility: hidden;
+  width: 364px;
+  height: 58px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+  padding-bottom: 150px;
+
+}
+#wrong_feedback{
+  position: relative;
+  left:785px;
+  bottom: 550px;
+  visibility: hidden;
+  width: 364px;
+  height: 58px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+  padding-bottom: 150px;
+
+}
+body{
+  border:0px solid#73AD21;
+}
+#correct{
+  visibility: hidden;
+  position: relative;
+  bottom:1050px;
+  height:90px;
+  widows: 88px;
+  left:25px;
+}
+#wrong{
+  visibility: hidden;
+}
+.dot {
+  height: 400px;
+  width: 400px;
+  background-color: #00bd56;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  bottom: 992px;
+  left: 200px;
+}
+#fake_score{
+  visibility: visible;
+  color: #000000;
+  font-size: 75;
+  position: relative;
+  bottom: 1304px;
+  padding-left: 322px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, SFProText;
+}
+#perfect{
+  position: relative;
+  bottom: 1190px;
+  font-size: 75px;
+  font-family: Arial, Helvetica, SFProText;
+  padding-left: 280px;
+}

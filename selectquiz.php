@@ -14,6 +14,12 @@ include('includes/init.php');
         var formObject = document.forms['quizform'];
         formObject.submit();
     }
+
+    var score= 0;
+    sessionStorage.setItem("score", score);
+    var count= 0;
+    sessionStorage.setItem("count", count);
+
 </script>
 </head>
 <body>

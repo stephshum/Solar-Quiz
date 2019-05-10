@@ -1,0 +1,68 @@
+a<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <link rel="stylesheet" type="text/css" href="results.css">
+  <script src="Reply.js"></script>
+</head>
+
+<body>
+  <div class="row" id="row">
+
+    <div class="column">
+
+      <!-- png -->
+      <!-- <img src="img/fact-vs-myth-image-copy.png" srcset="img/fact-vs-myth-image-copy@2x.png 2x,
+             img/fact-vs-myth-image-copy@3x.png 3x" class="Fact-vs-Myth-Image-Copy"> -->
+    </div>
+
+    <div class="column" id="column1">
+      <div class = "white_square" id="white_square">
+        <div class = "internal_container">
+
+      <div class="Tomkins-County-is-to" id="Tompkins"> You got all questions right. Are you a solar engineer? Why are you here?. </div>
+
+      <button class="fact_button" type="button" id="fb1" onclick="window.location.href='index.php'" ><div class="Fact"> Restart</div></button>
+
+      <button class="myth_button" id="mb1" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfiJG6Wmg6E6gNgoTgU0YTTGJGScExyJ2_grqMJqh5JCOFtBg/viewform'"><div class="Myth">Subscribe </div></button>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div id="feedback">
+    <p1> Yeah ! <br> Ithaca is<strong> ____ </strong>for solar energy</p1>
+  </div>
+  <div id="wrong_feedback">
+    <p1> It's okay to make mistakes<br> but you should feel<strong> terrible </strong> at this mistake</p1>
+  </div>
+  <div id="correct_yes">
+    <img src="correct.png" id="correct">
+  </div>
+  <div id="wrong">
+    <img src="wrong.png" id="wrong">
+  </div>
+  <span class="dot"></span>
+  <div id="fake_score">
+    <p id='percentage'>
+
+    </p>
+
+
+
+  </div>
+  <p id="perfect">Good Job!</p>
+
+
+</body>
+
+<script>
+var score=parseInt(sessionStorage.getItem("score"));
+var count=parseInt(sessionStorage.getItem("count"));
+var percent=score/count*100;
+
+  document.getElementById('percentage').innerHTML = percent+"%";
+
+</script>
+</html>

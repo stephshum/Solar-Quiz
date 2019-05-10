@@ -237,3 +237,47 @@
     margin: 1%;
     font-size: 40px !important;
 }
+
+#wrong{
+  visibility: hidden;
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  position: relative;
+  bottom: 1360px;
+  right: 1050px;
+}
+
+#correct{
+  visibility: hidden;
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  position: relative;
+  bottom: 1250px;
+  right: 1050px;
+}
+
+#reply{
+  visibility: hidden;
+  width: 700px;
+  height: 70px;
+  font-family: Arial, Helvetica, SFProText;
+  font-size: 50px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #000000;
+  padding-bottom: 200px;
+  margin: 40px;
+  position: relative;
+  bottom: 500px;
+
+}
+
+#score{
+  visibility: hidden;
+
+}
