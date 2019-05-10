@@ -4,6 +4,8 @@ include('includes/init.php');
 
 if (isset($_GET['chooseAQuiz'])) {
   $quiz_id = trim(filter_input(INPUT_GET, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
+}  elseif (isset($_POST['chooseAQuiz'])) {
+    $quiz_id = trim(filter_input(INPUT_POST, 'chooseAQuiz', FILTER_SANITIZE_NUMBER_INT));
 } else {
   $sql = 'SELECT id, name FROM quizzes;';
   $records = exec_sql_query($db, $sql)->fetchAll();
@@ -201,6 +203,9 @@ if (isset($_POST['update'])){
              ?>
           </div>
         </div>
+        <?php
+        echo "<input type=hidden id=chooseAQuiz name=chooseAQuiz value=$quiz_id> ";
+        ?>
       </form>
       <form action="editpage.php" method="post" enctype="multipart/form-data">
 
@@ -245,6 +250,7 @@ if (isset($_POST['update'])){
               echo "<input type=hidden id=inputtedphoto_id name=inputtedphoto_id value=$selected_photo_id> ";
               echo "<input type=hidden id=inputtedfile_ext name=inputtedfile_ext value=$selectedfile_ext> ";
               echo "<input type=hidden id=inputtedpage_id name=inputtedpage_id value=$page_id> ";
+              echo "<input type=hidden id=chooseAQuiz name=chooseAQuiz value=$quiz_id> ";
 
               ?>
               <input
@@ -259,6 +265,10 @@ if (isset($_POST['update'])){
               <label id = "alt_textlabel" for="alt_text">Alt text (image description)</label>
               <textarea name="alt_text"><?php echo $selectedalt_text;?></textarea>
             </div>
+
+            <?php
+            echo "<input type=hidden id=chooseAQuiz name=chooseAQuiz value=$quiz_id> ";
+            ?>
           <div>
             <input
               class="saveChanges btn btn-primary"
